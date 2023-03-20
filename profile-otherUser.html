@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<title>Profile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="profile-otherUser.css">
+<style>
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Open Sans", sans-serif
+  }
+</style>
+
+<body class="w3-theme-l5">
+
+  <div class="topnav">
+    <a href="#" class="nav-item">Wrinkled Pages</a>
+    <a href="homepage.html">Home</a>
+    <a href="#" id="search" class="nav-item">
+      <input class="searchInput" type="text" id="searchBox" placeholder="Search">
+      <button class="searchButton" href="#">
+        <i class="material-icons">
+          search
+        </i>
+      </button>
+    </a>
+
+    <div class="topnav-right">
+      <a href="createBook.html" class="nav-item">Write</a>
+      <a href="#" class="nav-item"><i class="fa fa-bell"></i></a>
+
+      <div class="dropdown">
+        <button class="dropbtn" id="profile"></button>
+        <div class="dropdown-content" style="right:0">
+          <a href="profile2.html">Profile</a>
+          <a href="#">Settings</a>
+          <a href="#">Theme</a>
+          <a href="#">Need Help?</a>
+          <a href="#" onclick="logout()">Log Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Container -->
+  <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+    <!-- The Grid -->
+    <div class="w3-row">
+      <!-- Left Column -->
+      <div class="w3-col m3">
+        <!-- Profile -->
+        <div class="w3-card w3-round w3-white">
+          <div class="w3-container">
+            <h4 class="w3-center" id="fname"></h4>
+            <p class="w3-center"><span id="profile-pic" style="font-size: 500%;"></span></p>
+            <hr>
+            <p><label>Total Books : <span id="total-books"></span> </label><!-- count total books this perticular author made and fetch here & if count==0 show no project yet --></p>
+            <!-- optinal -> <p><label>Rating: </label>count total books' rating for this perticular author made and fetch here & if count==0 show no project yet</p> -->
+            <p><label>Last active : <span id="last-active"></span> </label><!-- fetch joined since data --></p>
+
+          </div>
+        </div>
+        <br>
+        <!-- End Left Column -->
+      </div>
+
+      <!-- Middle Column -->
+      <div class="w3-col m9">
+
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+              <br>
+              <div class="w3-container w3-padding">
+                <h2><span id="user-name"></span>'s work</h2>
+              </div>
+              <br>
+              <hr>
+              <div class="bookinfo">
+                <div class="binfo">
+                  <ul id="book-list"></ul>
+                  <!-- use this read button for read book function -->
+                  <!-- <a class="b_read" href="#" style="text-decoration: none; padding:0px; margin:0px; color:white;">READ</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br><br>
+        <!-- End Middle Column -->
+      </div>
+
+
+
+      <!-- End Grid -->
+    </div>
+
+    <!-- End Page Container -->
+  </div>
+  <br>
+
+
+
+  <script>
+    // Accordion
+    function myFunction(id) {
+      var x = document.getElementById(id);
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-theme-d1";
+      } else {
+        x.className = x.className.replace("w3-show", "");
+        x.previousElementSibling.className =
+          x.previousElementSibling.className.replace(" w3-theme-d1", "");
+      }
+    }
+
+    // Used to toggle the menu on smaller screens when clicking on the menu button
+    function openNav() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else {
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+  </script>
+
+  <script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+
+
+    // main row
+    function openTab(tabName) {
+      var i, x;
+      x = document.getElementsByClassName("containerTab");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      document.getElementById(tabName).style.display = "block";
+    }
+
+    // collapsible
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+  </script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+  <script src="firebase.js"></script>
+  <script src="profile-otherUser.js"></script>
+  <script src="logOut.js"></script>
+
+</body>
+
+</html>

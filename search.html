@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="search.css">
+<style>
+  .s-cont {
+            width: 1000px;
+            border: 2px solid;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button-box {
+            position: relative;
+            border-bottom: 2px solid;
+            margin: 1% 1%;
+            padding: 1% 1% 1% 1%;
+        }
+
+        #btn {
+            background-color: #551a8b;
+            bottom: 0%;
+            position: absolute;
+            width: 20%;
+            height: 20%;
+            transition: .5s;
+        }
+
+        .toggle123-btn {
+            font-size: 200%;
+            padding: 0 5.5%;
+            cursor: pointer;
+            position: relative;
+            border: 0;
+            background-color: transparent;
+            outline: none;
+        }
+
+        /* list container */
+        .list {
+            margin: 0 1%;
+            width: 97%;
+            position: relative;
+            display: grid;
+            transition: .5s;
+        }
+
+        #books-searched {
+            left: 0px;
+        }
+
+        #profile-searched {
+            left: 1000px;
+            bottom: 104px;
+        }
+</style>
+<body>
+
+  <div class="topnav">
+    <a href="#" class="nav-item">Wrinkled Pages</a>
+    <a href="homepage.html">Home</a>
+    <a href="#" id="search" class="nav-item">
+      <input class="searchInput"type="text" id="searchBox" placeholder="Search">
+            <button class="searchButton" href="#">
+                <i class="material-icons">
+                    search
+                </i>
+            </button>
+    </a>
+    
+    <div class="topnav-right">
+      <a href="createBook.html" class="nav-item">Write</a>
+      <a href="#" class="nav-item"><i class="fa fa-bell"></i></a>
+
+      <div class="dropdown">
+        <button class="dropbtn" id="profile"></button>
+        <div class="dropdown-content" style="right:0">
+          <a href="profile2.html">Profile</a>
+          <a href="mystories.html">My Books</a>
+          <a href="#">Settings</a>
+          <a href="#">Theme</a>
+          <a href="#">Need Help?</a>
+          <a href="#" onclick="logout()">Log Out</a>
+        </div>
+      </div> 
+    </div>
+  </div>
+
+  <div class="w3">
+    <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+      <div class="w3-center w3-padding-16"> Search Results </div>
+    </div>
+  </div>
+
+
+  <div class="s-cont">
+    <div class="button-box">
+        <div id="btn"></div>
+        <button type="button" class="toggle123-btn" onclick="books()">Books</button>
+        <button type="button" class="toggle123-btn" onclick="profile()">Profile</button>
+    </div>
+
+    <div id="books-searched" class="list">
+        <ul id="book-list"></ul>
+    </div>
+    <div id="profile-searched" class="list">
+      <ul id="profile-list"></ul>
+    </div>
+
+</div>
+
+
+<script>
+
+  var x = document.getElementById("books-searched");
+  var y = document.getElementById("profile-searched");
+  var z = document.getElementById("btn");
+
+  function profile() {
+      x.style.left = "-1000px";
+      y.style.left = "1px";
+      z.style.left = "20%";
+  }
+
+  function books() {
+      x.style.left = "0px";
+      y.style.left = "1000px";
+      z.style.left = "1%";
+  }
+
+</script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+ <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+<script src="firebase.js"></script>
+<script src="search.js"></script>
+<script src="logOut.js"></script>
+</body>
+</html>

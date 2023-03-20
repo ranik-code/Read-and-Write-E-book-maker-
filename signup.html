@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sign Up</title>
+         <!-- Cool Google Fonts -->
+        <!-- Our stylesheet -->
+        <link rel="stylesheet" type="text/css" href="signup.css">
+    </head>
+    <body>
+        <div class="sign-up-form">
+            <img src="logo.png">
+            <h1 id="form_header"> Sign Up</h1>
+
+            <div id="signup-form">
+                    
+                <input type="text" class="input-box" id="fullname" placeholder="Fullname"><br>
+                <input type="email" class="input-box" id="email" placeholder="Email"><br>
+                <input type="password" class="input-box" id="password" placeholder="Password"><br>
+                <label style="margin: 0% 5%;">
+                    <input class="checkbox" id="check-box" type="checkbox" onclick="showpass()"> 
+                    Show Password
+                </label>
+                
+
+                <div id="button_container">
+                    <button class="submit-btn" onclick="register()">Register</button>
+                </div>
+
+                <p> Already have an account? <a href="login.html"><b>Login</b></a> </p>  
+
+                    
+            </div>
+    
+        </div>
+
+    
+    </body>
+    <script>
+        var p = document.getElementById("password");
+        function showpass(){
+            if (p.type=="password") {
+                p.type = "text";
+            } else {
+                p.type = "password";
+            }
+        }
+    </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+    <!-- Our script must be loaded after firebase references -->
+    <script src="firebase.js"></script>
+    <script src="main.js"></script>
+
+</html>
